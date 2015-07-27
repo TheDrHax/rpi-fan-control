@@ -1,0 +1,3 @@
+update-rc.d rpi-fan-control start 20 2 3 4 5 . stop 0 1 6 .
+systemctl daemon-reload > /dev/null 2>&1 || true
+service rpi-fan-control start

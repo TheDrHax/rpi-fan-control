@@ -1,0 +1,2 @@
+update-rc.d rpi-fan-control remove
+systemctl daemon-reload > /dev/null 2>&1 || true

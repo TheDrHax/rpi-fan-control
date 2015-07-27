@@ -1,0 +1,6 @@
+Package: rpi-fan-control
+Version: 1.0.0
+Maintainer: TheDrHax <the.dr.hax@gmail.com>
+Architecture: armhf
+Section: misc
+Description: Temperature-based fan control on Raspberry Pi
