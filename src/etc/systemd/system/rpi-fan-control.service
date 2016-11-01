@@ -1,0 +1,9 @@
+[Unit]
+Description=Temperature-based control of Raspberry Pi fan through GPIO port
+
+[Service]
+ExecStart=/usr/sbin/rpi-fan-control
+ExecReload=/bin/kill -s HUP $MAINPID
+
+[Install]
+WantedBy=multi-user.target

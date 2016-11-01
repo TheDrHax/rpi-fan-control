@@ -30,7 +30,7 @@ sudo apt-get install rpi-fan-control
 
 ## Configuration
 
-There is config file /etc/thedrhax/rpi-fan-control.conf in which you can change
+There is config file /etc/rpi-fan-control/rpi-fan-control.conf in which you can change
 * GPIO pin which will contol the fan
 * Upper and lower temperature triggers
 * Temperature refresh delay

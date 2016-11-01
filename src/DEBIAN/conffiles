@@ -1,2 +1,2 @@
-/etc/thedrhax/rpi-fan-control.conf
-/etc/init.d/rpi-fan-control
+/etc/rpi-fan-control/rpi-fan-control.conf
+/etc/systemd/system/rpi-fan-control.service
