@@ -1,2 +1,4 @@
-update-rc.d rpi-fan-control remove
+systemctl disable rpi-fan-control.service
+rm /etc/systemd/system/rpi-fan-control.service
 systemctl daemon-reload > /dev/null 2>&1 || true
+systemctl reset-failed || true

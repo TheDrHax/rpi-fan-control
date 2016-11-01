@@ -1,3 +1,4 @@
-update-rc.d rpi-fan-control start 20 2 3 4 5 . stop 0 1 6 .
+chmod 644 /etc/systemd/system/rpi-fan-control.service
 systemctl daemon-reload > /dev/null 2>&1 || true
-service rpi-fan-control start
+systemctl enable rpi-fan-control.service
+systemctl start rpi-fan-control.service
