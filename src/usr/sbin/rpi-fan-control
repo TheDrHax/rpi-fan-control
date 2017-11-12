@@ -4,35 +4,35 @@ config="/etc/rpi-fan-control/rpi-fan-control.conf"
 . "$config"
 
 function get_cpu_temp {
-	/opt/vc/bin/vcgencmd measure_temp | grep -Eo "[0-9]*\." | sed 's/\.//g'
+  /opt/vc/bin/vcgencmd measure_temp | grep -Eo "[0-9]*\." | sed 's/\.//g'
 }
 
 function set_pin {
-	pin=$1
-	value=$2
+  pin=$1
+  value=$2
 
-	echo $value > /sys/class/gpio/gpio$pin/value
+  echo "$value" > "/sys/class/gpio/gpio${pin}/value"
 }
 
 # Initialize pin
-echo $fan_pin	> /sys/class/gpio/export
-echo "out" 	> /sys/class/gpio/gpio$fan_pin/direction
+if [[ ! -e "/sys/class/gpio/gpio${fan_pin}" ]]; then
+    echo "$fan_pin"	> /sys/class/gpio/export
+fi
+echo "out" > "/sys/class/gpio/gpio${fan_pin}/direction"
 
 while true; do
 
-	if [ $(get_cpu_temp) -ge $temp_high ] && [ ! "$cooling" ]; then
-		# Turn on fan
-		set_pin $fan_pin 1
+  if [[ $(get_cpu_temp) > "$temp_high" ]] && [[ ! "$cooling" ]]; then
+    # Turn on fan
+    set_pin "$fan_pin" 1
+    cooling="true"
+  fi
 
-		cooling="true"
-	fi
+  if [[ $(get_cpu_temp) < "$temp_low" ]] && [[ "$cooling" ]]; then
+    # Turn off fan
+    set_pin "$fan_pin" 0
+    unset cooling
+  fi
 
-	if [ $(get_cpu_temp) -lt $temp_low ] && [ "$cooling" ]; then
-		# Turn off fan
-		set_pin $fan_pin 0
-
-		unset cooling
-	fi
-
-	sleep $check_delay
+  sleep "$check_delay"
 done
