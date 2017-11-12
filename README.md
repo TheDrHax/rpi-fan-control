@@ -3,11 +3,8 @@ Temperature-based control of Raspberry Pi fan through GPIO port.
 
 This package installs the **rpi-fan-control** daemon that checks temperature of the Raspberry Pi CPU and controls fan through one of the GPIO pins.
 
-## Installation
+## Installation (.deb package)
 
-At the moment, there are two ways to install this package:
-
-### 1. Build .deb package
 Dependencies:
 * fakeroot
 
@@ -18,14 +15,6 @@ make deb
 And then install it with ```dpkg```:
 ```
 sudo dpkg -i rpi-fan-control-*.deb
-```
-
-### 2. Install from my APT repository
-```
-echo "deb http://local.thedrhax.us.to/apt/stable/ /" | sudo tee "/etc/apt/sources.list.d/thedrhax.list"
-wget -O- http://local.thedrhax.us.to/apt/TheDrHax.key | sudo apt-key add -
-sudo apt-get update
-sudo apt-get install rpi-fan-control
 ```
 
 ## Configuration
