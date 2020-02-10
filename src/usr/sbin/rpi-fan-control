@@ -16,7 +16,7 @@ function set_pin {
 
 # Initialize pin
 if [[ ! -e "/sys/class/gpio/gpio${fan_pin}" ]]; then
-    echo "$fan_pin"	> /sys/class/gpio/export
+    echo "$fan_pin" > /sys/class/gpio/export
 fi
 echo "out" > "/sys/class/gpio/gpio${fan_pin}/direction"
 
