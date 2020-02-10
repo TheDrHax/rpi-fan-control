@@ -20,7 +20,7 @@ if [[ ! -e "/sys/class/gpio/gpio${fan_pin}" ]]; then
 fi
 echo "out" > "/sys/class/gpio/gpio${fan_pin}/direction"
 
-while true; do
+while : ; do
   temp=$(get_cpu_temp)
 
   if [[ "$temp" -ge "$temp_high" ]] && [[ ! "$cooling" ]]; then
